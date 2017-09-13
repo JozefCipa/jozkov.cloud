@@ -1,0 +1,28 @@
+@media all and (max-width: 1100px) {
+	form {
+		flex-direction: column;
+	}
+
+	section form input, 
+	section form button {
+		flex: 1 !important;
+		margin: 5px !important;
+	}
+}
+
+@media all and (max-width: 480px) {
+	main {
+		flex-basis: 100%;
+		margin: 10px;
+		padding: 5px;
+	}
+
+	header h1 {
+		font-size: 3em;
+	}
+
+	footer #url {
+		font-size: 1.4em;
+		text-align: center;
+	}
+}

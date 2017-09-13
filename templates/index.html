@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>jozkov.cloud</title>
+	<meta name="author" content="https://jozefcipa.com">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="public/css/styles.css"/>
+	<link rel="stylesheet" type="text/css" href="public/css/responsive.css"/>
+</head>
+<body>
+	<main>
+		<header>
+			<h1>jozkov.cloud</h1>
+		</header>
+		<section>
+			<form>
+				<input type="text" name="url" placeholder="Your URL here..." autocomplete="off" autofocus="true">
+				<input type="text" name="name" placeholder="jozkov.cloud/{name}" autocomplete="off">
+				<button type="submit">Short it</button>
+			</form>
+		</section>
+		<footer>
+			<div class="wrap">
+				<div id="msg" {% if msg == '' %} style="visibility: hidden;" {% endif %}>
+					{{ msg|safe }}
+				</div>
+				<div id="url"></div>
+			</div>
+		</footer>
+	</main>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="public/js/main.js"></script>
+</body>
+</html>
