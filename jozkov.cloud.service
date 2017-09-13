@@ -1,0 +1,14 @@
+; Copy this file to /etc/systemd/system/jozkov.cloud.service
+
+[Unit]
+Description=uWSGI instance to serve myproject
+After=network.target
+
+[Service]
+User=joci
+Group=www-data
+WorkingDirectory=/var/www/jozkov.cloud
+ExecStart=uwsgi --ini app.ini
+
+[Install]
+WantedBy=multi-user.target
