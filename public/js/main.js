@@ -5,7 +5,6 @@ $(document).ready(function() {
 
 		var url = $(this).find('input[name="url"]').val();
 		var name = $(this).find('input[name="name"]').val();
-
 		var $msg = $('#msg');
 		var $url = $('#url');
 
