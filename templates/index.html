@@ -23,13 +23,13 @@
 		</section>
 		<footer>
 			<div class="wrap">
-				<div id="msg" {% if msg == '' %} style="visibility: hidden;" {% endif %}>
-					{{ msg|safe }}
-				</div>
 				<div id="url"></div>
 			</div>
 		</footer>
 	</main>
+	{% if msg %}
+		<div class="notify ERROR">{{ msg|safe }}</div>
+	{% endif %}
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 	<script src="public/js/main.js"></script>
 </body>

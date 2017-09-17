@@ -5,7 +5,6 @@ $(document).ready(function() {
 
 		var url = $(this).find('input[name="url"]').val();
 		var name = $(this).find('input[name="name"]').val();
-		var $msg = $('#msg');
 		var $url = $('#url');
 
 		if (url.trim() != '') {
@@ -17,21 +16,25 @@ $(document).ready(function() {
 
 					if (res.msg) {
 						$url.css('visibility', 'hidden');
-						$msg
-							.html(res.msg)
-							.css('visibility', 'visible');
+						notify(res.msg, 'ERROR')
 					} else {
-						$msg.css('visibility', 'hidden');
+						$('div.notify').remove();
 						$url
 							.html(res.yourUrl)
 							.css('visibility', 'visible');
 					}
 				},
 				error: function(err) {
-					$msg.html('Something went wrong. Couldn\'t handle your request.');
+					notify('Something went wrong. Couldn\'t handle your request.', 'ERROR');
 				}
 			});
 		}
 
 	});
 });
+
+function notify(data, type) {
+	$('div.notify').remove();
+	var $msg = $('<div class="notify ' + type + '">' + data +'</div>');
+	$('body').append($msg);
+}
