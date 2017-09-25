@@ -57,14 +57,14 @@ def add_url():
     # Check if name is not empty
     if name:
         # Check if given name already exists in redis
-        if redis.exists(url_key + name + '_custom-name'):
+        if redis.exists(url_key + name + config['customKeyNamePrefix']):
             return jsonify({'msg': 'This name is already in use. Try something else.'})
 
         # Make slug from name
         name = unidecode.unidecode(slugify(name))
 
         # Assign custom name with prefix to avoid showing this url for other users who enter same url
-        redis.set(url_key + name + '_custom-name', url)
+        redis.set(url_key + name + config['customKeyNamePrefix'], url)
     else:
 
         # If this is set to True, it will check if given url isn't already saved, if it is, just return key
@@ -72,10 +72,10 @@ def add_url():
 
             # Check if given url has been already saved
             for key in redis.keys(redis_config['prefix'] + "*"):
-                if (redis.get(key).decode('utf-8') == url and 'custom-name' not in key.decode('utf-8')):
+                if (redis.get(key).decode('utf-8') == url and config['customKeyNamePrefix'] not in key.decode('utf-8')):
 
                     # Remove from key redis prefix and custom name prefix if exists
-                    name = key.decode('utf-8').replace(redis_config['prefix'], '').replace('_custom-name', '')
+                    name = key.decode('utf-8').replace(redis_config['prefix'], '').replace(config['customKeyNamePrefix'], '')
         
         if not name:
             # Generate random key
@@ -95,13 +95,14 @@ def return_link(key):
 
     global msg
 
+    # Try to find url by key
     url = redis.get(redis_config['prefix'] + key)
+
+    # Try to find url by custom name key
+    custom_key_url = redis.get(redis_config['prefix'] + key + config['customKeyNamePrefix'])
 
     if url:
         url = url.decode('utf-8')
-        if url.find("http://") != 0 and url.find("https://") != 0:
-            url = "http://" + url
-
         return redirect(url)
     else:
         # Redirect to index with message
