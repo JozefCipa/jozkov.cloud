@@ -104,6 +104,9 @@ def return_link(key):
     if url:
         url = url.decode('utf-8')
         return redirect(url)
+    elif custom_key_url:
+        custom_key_url = custom_key_url.decode('utf-8')
+        return redirect(custom_key_url)
     else:
         # Redirect to index with message
         msg = 'Url "<i>{0}</i>" doesn\'t exist'.format(config['baseUrl'] + '/' + key)
