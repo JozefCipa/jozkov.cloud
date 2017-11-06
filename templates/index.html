@@ -6,6 +6,7 @@
 	<meta name="author" content="https://jozefcipa.com">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 	<link rel="stylesheet" type="text/css" href="public/css/styles.css"/>
 	<link rel="stylesheet" type="text/css" href="public/css/responsive.css"/>
 </head>
@@ -18,7 +19,7 @@
 			<form>
 				<input type="text" name="url" placeholder="Your URL here..." autocomplete="off" autofocus="true">
 				<input type="text" name="name" placeholder="jozkov.cloud/{name}" autocomplete="off">
-				<button type="submit">Short it</button>
+				<button type="submit" class="waves-effect waves-light btn">Short it</button>
 			</form>
 		</section>
 		<footer>
@@ -31,6 +32,7 @@
 		<div class="notify ERROR">{{ msg|safe }}</div>
 	{% endif %}
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 	<script src="public/js/main.js"></script>
 </body>
 </html>

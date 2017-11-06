@@ -102,11 +102,9 @@ def return_link(key):
     custom_key_url = redis.get(redis_config['prefix'] + key + config['customKeyNamePrefix'])
 
     if url:
-        url = url.decode('utf-8')
-        return redirect(url)
+        return redirect(url.decode('utf-8'))
     elif custom_key_url:
-        custom_key_url = custom_key_url.decode('utf-8')
-        return redirect(custom_key_url)
+        return redirect(custom_key_url.decode('utf-8'))
     else:
         # Redirect to index with message
         msg = 'Url "<i>{0}</i>" doesn\'t exist'.format(config['baseUrl'] + '/' + key)
